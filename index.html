@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f5eb">
+  <meta name="description" content="Discover nature with TouchGrass AI.">
+  <title>TouchGrass AI | Explore Outside</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="#"><span>✳</span> touchgrass<span class="dot">.</span></a>
+    <div class="nav-right">
+      <span class="online-dot"></span>
+      <span>Nature mode on</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">YOUR DAILY RESET 🌱</span>
+        <h1>The world is<br>waiting <em>outside.</em></h1>
+        <p>Less scrolling. More exploring. Let AI turn your free time into little adventures in the real world.</p>
+        <a class="primary-btn" href="#adventure">Find my adventure <span>↗</span></a>
+        <div class="hero-note">✦ Small steps. Fresh air. Better days.</div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1100&q=85" alt="Sunlight shining through a peaceful forest">
+        <div class="image-tag"><span>🌿</span><div><strong>Nature is calling</strong><small>Answer it today.</small></div></div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><span class="stat-icon">☀</span><div><strong id="minutes">0</strong><small>Outdoor minutes</small></div></div>
+      <div class="stat"><span class="stat-icon">✦</span><div><strong id="points">0</strong><small>Nature points</small></div></div>
+      <div class="stat"><span class="stat-icon">✓</span><div><strong id="completed">0</strong><small>Quests completed</small></div></div>
+    </section>
+
+    <section id="adventure" class="section">
+      <div class="section-heading">
+        <div><span class="eyebrow">01 — STEP OUT</span><h2>Your next little adventure</h2></div>
+        <span class="section-symbol">↗</span>
+      </div>
+      <div class="adventure-layout">
+        <div class="panel controls">
+          <label for="mood">What's your mood?</label>
+          <select id="mood">
+            <option value="calm">I need some peace 🌿</option>
+            <option value="curious">I'm feeling curious 🔎</option>
+            <option value="energetic">I have energy to burn ⚡</option>
+            <option value="creative">I feel creative 🎨</option>
+          </select>
+
+          <label for="duration">How much time do you have?</label>
+          <select id="duration">
+            <option value="10">10 minutes</option>
+            <option value="15" selected>15 minutes</option>
+            <option value="30">30 minutes</option>
+            <option value="60">1 hour</option>
+          </select>
+
+          <label for="place">Where will you explore?</label>
+          <select id="place">
+            <option value="park">Park or garden</option>
+            <option value="backyard">Backyard or balcony</option>
+            <option value="neighborhood">My neighborhood</option>
+            <option value="trail">Nature trail</option>
+          </select>
+
+          <button id="generateBtn" class="primary-btn full-btn">✦ Generate my quest</button>
+          <p class="tiny-note">Powered by an open-weight AI model when Ollama is running.</p>
+        </div>
+
+        <div class="quest-card" aria-live="polite">
+          <div class="quest-top"><span id="quest-type">TODAY'S QUEST</span><span class="difficulty">✳ EASY DOES IT</span></div>
+          <div class="quest-emoji" id="quest-emoji">🍃</div>
+          <h3 id="quest-title">The Tiny Explorer</h3>
+          <p id="quest-description">Find three different leaf shapes. Notice their edges, colors, and patterns.</p>
+          <div class="quest-meta"><span>◷ <span id="quest-time">15</span> minutes</span><span>✦ <span id="quest-points">20</span> points</span></div>
+          <button id="completeBtn" class="complete-btn">I did it! +20 points ✓</button>
+          <p id="quest-status" class="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="detective" class="section">
+      <div class="section-heading">
+        <div><span class="eyebrow">02 — GET CURIOUS</span><h2>Nature detective</h2></div>
+        <span class="section-symbol">⌕</span>
+      </div>
+      <p class="section-intro">Found something interesting? Upload a photo and let an open AI vision model suggest what it might be.</p>
+      <div class="panel upload-panel">
+        <label for="photo" class="upload-box">
+          <span class="upload-icon">📷</span>
+          <strong>Drop into discovery</strong>
+          <span>Choose a photo of a leaf, flower, bird, or anything in nature.</span>
+          <span class="upload-action">Choose an image</span>
+          <input type="file" id="photo" accept="image/*" hidden>
+        </label>
+        <div class="preview-area" id="previewArea">
+          <div class="preview-placeholder">Your discovery will appear here.</div>
+        </div>
+        <div class="analysis-result" id="analysisResult" aria-live="polite">
+          <strong>Ready when you are 🌱</strong>
+          <p>Image classification runs in your browser after the model downloads.</p>
+        </div>
+        <button id="analyzeBtn" class="primary-btn full-btn" disabled>Identify my discovery</button>
+        <p class="tiny-note">The first analysis needs an internet connection to download the model. Photos are processed in your browser.</p>
+      </div>
+    </section>
+
+    <section id="journal" class="section">
+      <div class="section-heading">
+        <div><span class="eyebrow">03 — KEEP THE MOMENT</span><h2>Your nature journal</h2></div>
+        <span class="section-symbol">✎</span>
+      </div>
+      <div class="panel journal-panel">
+        <label for="journalEntry">What did you notice outside today?</label>
+        <textarea id="journalEntry" rows="3" placeholder="I saw a tiny butterfly resting on a flower..."></textarea>
+        <button id="saveJournal" class="primary-btn">Save this moment ↗</button>
+        <div id="journalList" class="journal-list"></div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <span>🌳</span>
+      <h2>Life is happening out there.</h2>
+      <p>Close this tab. Open the door. Go notice something wonderful.</p>
+    </section>
+  </main>
+
+  <footer>Made for the planet, powered by open AI. <span>TouchGrass AI © 2026</span></footer>
+</body>
+</html>
